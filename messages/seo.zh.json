@@ -1,0 +1,52 @@
+{
+  "home": {
+    "title": "AI Fandom OC Creator - 试写第一段 OC 场景",
+    "description": "一个私密 AI 创作沙盒，用于成熟但非露骨的 fandom-adjacent OC、reader-insert、AU、trope 和关系动态草稿。",
+    "ogImage": "/banner.png"
+  },
+  "pricing": {
+    "title": "定价方案 - AI Fandom OC Creator",
+    "description": "AI Fandom OC Creator 的方案信息。MVP 不会把首次项目保存、首次改写、首次记忆编辑和基础导出放到付费墙后。",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "blog": {
+    "title": "博客 - AI Fandom OC Creator",
+    "description": "关于私密 OC 草稿、项目记忆和安全 fandom-adjacent 创作流程的更新。",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "contact": {
+    "title": "联系我们 - AI Fandom OC Creator",
+    "description": "联系 AI Fandom OC Creator 团队，反馈问题、建议和产品需求。",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "login": {
+    "title": "登录 - AI Fandom OC Creator",
+    "description": "登录后继续你的私密 OC 场景草稿项目。",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "signup": {
+    "title": "注册 - AI Fandom OC Creator",
+    "description": "创建账户以保存第一段 OC 场景并继续同一个项目。",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "terms": {
+    "title": "服务条款 - AI Fandom OC Creator",
+    "description": "阅读 AI Fandom OC Creator 的使用条款。",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "privacy": {
+    "title": "隐私政策 - AI Fandom OC Creator",
+    "description": "了解私密项目数据、记忆、来源和生成图片如何被处理。",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "cookies": {
+    "title": "Cookie 政策 - AI Fandom OC Creator",
+    "description": "了解 AI Fandom OC Creator 如何使用 cookies 和类似技术。",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "refund": {
+    "title": "退款政策 - AI Fandom OC Creator",
+    "description": "查看我们的退款政策,了解申请退款的条件和流程。",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  }
+}

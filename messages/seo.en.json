@@ -1,0 +1,52 @@
+{
+  "home": {
+    "title": "AI Fandom OC Creator - Try your first OC scene",
+    "description": "A private AI creative sandbox for mature but non-explicit fandom-adjacent OC, reader-insert, AU, trope, and relationship-dynamic drafting.",
+    "ogImage": "/banner.png"
+  },
+  "pricing": {
+    "title": "Pricing - AI Fandom OC Creator",
+    "description": "Plan information for AI Fandom OC Creator. The MVP keeps the first project save, first rewrite, first memory edit, and basic export outside the paywall.",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "blog": {
+    "title": "Blog - AI Fandom OC Creator",
+    "description": "Notes and updates about private OC drafting, project memory, and safe fandom-adjacent creative workflows.",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "contact": {
+    "title": "Contact - AI Fandom OC Creator",
+    "description": "Contact the AI Fandom OC Creator team for support, feedback, and product questions.",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "login": {
+    "title": "Login - AI Fandom OC Creator",
+    "description": "Sign in to continue private OC scene drafting projects.",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "signup": {
+    "title": "Sign Up - AI Fandom OC Creator",
+    "description": "Create an account to save your first OC scene and continue the same project.",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "terms": {
+    "title": "Terms of Service - AI Fandom OC Creator",
+    "description": "Read the terms for using AI Fandom OC Creator.",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "privacy": {
+    "title": "Privacy Policy - AI Fandom OC Creator",
+    "description": "Learn how private project data, memory, sources, and generated images are handled.",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "cookies": {
+    "title": "Cookie Policy - AI Fandom OC Creator",
+    "description": "Understand how AI Fandom OC Creator uses cookies and similar technologies.",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  },
+  "refund": {
+    "title": "Refund Policy - AI Fandom OC Creator",
+    "description": "Review our refund policy to understand the conditions and process for requesting refunds.",
+    "ogImage": "https://ai-saas-template-aceternity.vercel.app/banner.png"
+  }
+}
