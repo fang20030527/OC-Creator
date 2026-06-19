@@ -339,6 +339,10 @@
       "signInLink": "登录",
       "signUpButton": "注册",
       "signingUp": "注册中...",
+      "guestScene": {
+        "title": "你的场景预览已暂存",
+        "description": "访客草稿已保存在当前设备。注册后打开项目库或 Draft Studio 就能继续。"
+      },
       "errors": {
         "nameRequired": "请输入您的姓名",
         "invalidEmail": "请输入有效的邮箱地址",
@@ -1151,7 +1155,17 @@
       "ageConfirmation": "我确认成熟浪漫提示只涉及成年角色，并且应保持非露骨。",
       "generateTitle": "生成预览",
       "generateDescription": "MVP 会在这里先生成一段 250-400 字片段，再邀请注册。",
-      "generateButton": "生成预览"
+      "generateButton": "生成预览",
+      "generatingButton": "生成中...",
+      "errorTitle": "预览需要先调整"
+    },
+    "errors": {
+      "requiredFields": "请先填写必需的 OC、关联对象和关系动态，再生成预览。",
+      "adultConfirmation": "请确认成熟浪漫提示只涉及成年角色，并且应保持非露骨。",
+      "minorCodedPrompt": "成熟浪漫提示必须只涉及成年角色。请修改设定，让所有相关角色明确为 18+。",
+      "explicitContent": "此预览支持成熟浪漫张力，但不写露骨情色。请改成暗示性或淡出处理。",
+      "realPersonPrompt": "MVP 不支持真人亲密幻想。请使用虚构、原创或泛 fandom 的角色设定。",
+      "unknown": "生成预览时出了点问题，请再试一次。"
     },
     "placeholder": {
       "eyebrow": "等待预览",
@@ -1162,6 +1176,11 @@
       "sceneEyebrow": "场景片段",
       "sceneTitle": "账册室里的雨",
       "sceneText": "Mara 在台灯下找到那张缺失的索引卡。纸角仍然潮湿，像是档案馆本身在她到来前试图把它淹掉。Rowan 停在门口时，她没有抬头。\n\n“你跟踪我。”她说。\n\n“你留下了墨迹。”他答得太轻。可当他的目光落到那张卡片上，玩笑从脸上退了下去。“这张昨天已经被抹掉了。我亲眼看见职员一边说架号，一边忘记它。”\n\nMara 用两根手指把卡片压平。房间里有雨水、旧胶水，以及秘密即将被分享时那种带电的沉默。她本该让 Rowan 离开。相反，她把第二支笔推过桌面。\n\n“写下你记得的内容。”她说，“如果我们都写，也许这座城市就必须保留它。”\n\n他接过笔，没有碰到她的手。那份小心不知为什么比触碰更亲密。",
+      "providerLabel": "生成来源",
+      "provider": {
+        "evolink": "Evolink 文本接口",
+        "localFallback": "本地预览 fallback"
+      },
       "memoryEyebrow": "迷你记忆卡",
       "memoryTitle": "建议记忆",
       "memory": {
@@ -1174,6 +1193,7 @@
     "save": {
       "title": "保存这个 OC 并继续",
       "description": "注册应当出现在预览之后。保存后会创建第一个项目，并进入 Draft Studio。",
+      "localDraftNote": "此预览已暂存在当前设备，用于注册后的衔接。",
       "cta": "注册并保存"
     }
   },
@@ -1211,6 +1231,25 @@
         "action": "继续写"
       }
     },
+    "realProjects": {
+      "loading": "正在读取已保存项目...",
+      "error": "项目暂时没有读取成功，先保留本地预览入口。",
+      "emptyDraft": "这个项目还没有可显示的当前草稿。",
+      "emptyMemory": "项目记忆待检查",
+      "updated": "最近更新：{date}",
+      "versionCount": "已保存版本：{count}",
+      "open": "继续写",
+      "status": {
+        "active": "已保存"
+      }
+    },
+    "guestDraft": {
+      "status": "访客预览已就绪",
+      "description": "这个项目来自第一段场景预览，正在等待成为已保存项目。",
+      "continue": "在 Studio 继续",
+      "discard": "丢弃预览",
+      "savedLocally": "来自访客流程的本地暂存"
+    },
     "privateByDefault": "默认私密",
     "checklist": {
       "title": "下一步有意义动作",
@@ -1236,6 +1275,15 @@
       "rewrite": "已排队改写：当前场景会在保留确认记忆和边界的前提下被重写。",
       "save": "前端预览中已保存版本。",
       "restore": "已选择恢复预览。真实版本恢复会在确认后替换当前草稿。"
+    },
+    "guestDraft": {
+      "loaded": "已载入当前设备上的访客预览。",
+      "title": "把这个访客预览变成第一个项目",
+      "description": "在后端项目持久化接入前，这个前端衔接会保留场景和建议记忆。",
+      "save": "保存为项目",
+      "saving": "保存中...",
+      "saveSuccess": "项目 {projectId} 已保存。",
+      "saveFailed": "暂时无法把此预览保存为项目，请再试一次。"
     },
     "actions": {
       "continue": "继续",

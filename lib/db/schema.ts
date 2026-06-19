@@ -161,6 +161,71 @@ export const chatMessage = pgTable("chat_message", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
+// OC writing projects
+export const ocProject = pgTable(
+  "oc_project",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
+    title: text("title").notNull(),
+    source: varchar("source", { length: 32 }).default("guest_scene").notNull(),
+    status: varchar("status", { length: 32 }).default("active").notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().$onUpdate(() => new Date()).notNull(),
+  },
+  table => ({
+    userIdx: index("oc_project_user_idx").on(table.userId),
+  }),
+);
+
+export const ocDraft = pgTable(
+  "oc_draft",
+  {
+    id: text("id").primaryKey(),
+    projectId: text("project_id").notNull().references(() => ocProject.id, { onDelete: "cascade" }),
+    title: text("title").notNull(),
+    content: text("content").notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().$onUpdate(() => new Date()).notNull(),
+  },
+  table => ({
+    projectIdx: index("oc_draft_project_idx").on(table.projectId),
+  }),
+);
+
+export const ocDraftVersion = pgTable(
+  "oc_draft_version",
+  {
+    id: text("id").primaryKey(),
+    projectId: text("project_id").notNull().references(() => ocProject.id, { onDelete: "cascade" }),
+    draftId: text("draft_id").notNull().references(() => ocDraft.id, { onDelete: "cascade" }),
+    label: text("label").notNull(),
+    content: text("content").notNull(),
+    versionNumber: integer("version_number").notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  table => ({
+    projectIdx: index("oc_draft_version_project_idx").on(table.projectId),
+  }),
+);
+
+export const ocProjectMemory = pgTable(
+  "oc_project_memory",
+  {
+    id: text("id").primaryKey(),
+    projectId: text("project_id").notNull().references(() => ocProject.id, { onDelete: "cascade" }).unique(),
+    ocProfile: text("oc_profile").notNull(),
+    relationshipDynamic: text("relationship_dynamic").notNull(),
+    storyContext: text("story_context").notNull(),
+    preferencesBoundaries: text("preferences_boundaries").notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().$onUpdate(() => new Date()).notNull(),
+  },
+  table => ({
+    projectIdx: index("oc_project_memory_project_idx").on(table.projectId),
+  }),
+);
+
 // Generation history for images and videos
 export const generationHistory = pgTable("generation_history", {
   id: text("id").primaryKey(),

@@ -24,6 +24,12 @@ export function SignupForm({ showGoogleAuth = true }: SignupFormProps) {
   const t = useTranslations('auth.signup');
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
+  const [cameFromGuestScene, setCameFromGuestScene] = React.useState(false);
+
+  React.useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    setCameFromGuestScene(searchParams.get("from") === "guest-scene");
+  }, []);
 
   const form = useForm<SignupInput>({
     resolver: zodResolver(signupSchema),
@@ -108,6 +114,14 @@ export function SignupForm({ showGoogleAuth = true }: SignupFormProps) {
         ) : undefined
       }
     >
+      {cameFromGuestScene && (
+        <div className="border border-[#d7c5b7] bg-[#fffaf4] p-4 text-sm leading-6 text-[#5f4c43] dark:border-[#4c382d] dark:bg-[#211713] dark:text-[#c7b09f]">
+          <p className="font-semibold text-[#211713] dark:text-[#fff4e8]">
+            {t("guestScene.title")}
+          </p>
+          <p className="mt-1">{t("guestScene.description")}</p>
+        </div>
+      )}
       <FormTextField
         control={form.control}
         name="name"

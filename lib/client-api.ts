@@ -36,6 +36,40 @@ export interface CreditHistoryResponse {
 
 export interface ApiErrorResponse {
   error?: string;
+  code?: string;
+}
+
+export interface GuestSceneResponsePayload {
+  provider: "local-fallback" | "evolink";
+  sceneTitle: string;
+  sceneText: string;
+  memory: {
+    oc: string;
+    dynamic: string;
+    context: string;
+    boundaries: string;
+  };
+}
+
+export interface ProjectFromGuestDraftResponse {
+  projectId: string;
+  draftId: string;
+}
+
+export interface ProjectSummary {
+  id: string;
+  title: string;
+  source: string;
+  status: string;
+  updatedAt: string | Date;
+  draftId: string | null;
+  draftPreview: string;
+  memoryPreview: string;
+  versionCount: number;
+}
+
+export interface ProjectsResponse {
+  projects: ProjectSummary[];
 }
 
 export type ChatStreamEvent =

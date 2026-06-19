@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowLeft,
   BookOpenText,
@@ -18,10 +18,40 @@ import {
 import { useLocale, useTranslations } from "next-intl";
 
 import { Button } from "@/components/button";
+import type { ApiErrorResponse, ProjectFromGuestDraftResponse } from "@/lib/client-api";
+import {
+  clearGuestSceneDraft,
+  readGuestSceneDraft,
+  type GuestSceneDraft,
+} from "@/lib/guest-scene-draft";
 
 type StudioAction = "idle" | "continue" | "rewrite" | "save" | "restore";
 
-function buildMemoryCards(t: ReturnType<typeof useTranslations<"draftStudio">>) {
+function buildMemoryCards(
+  t: ReturnType<typeof useTranslations<"draftStudio">>,
+  guestDraft: GuestSceneDraft | null
+) {
+  if (guestDraft) {
+    return [
+      {
+        title: t("memory.cards.oc.title"),
+        body: guestDraft.result.memory.oc,
+      },
+      {
+        title: t("memory.cards.dynamic.title"),
+        body: guestDraft.result.memory.dynamic,
+      },
+      {
+        title: t("memory.cards.context.title"),
+        body: guestDraft.result.memory.context,
+      },
+      {
+        title: t("memory.cards.boundaries.title"),
+        body: guestDraft.result.memory.boundaries,
+      },
+    ];
+  }
+
   return [
     {
       title: t("memory.cards.oc.title"),
@@ -86,10 +116,67 @@ export function DraftStudioPage() {
   const [action, setAction] = useState<StudioAction>("idle");
   const [acceptedSuggestion, setAcceptedSuggestion] = useState(false);
   const [savedCount, setSavedCount] = useState(3);
-  const memoryCards = buildMemoryCards(t);
+  const [guestDraft, setGuestDraft] = useState<GuestSceneDraft | null>(null);
+  const [draftText, setDraftText] = useState(() => t("editor.sampleText"));
+  const [isSavingGuestDraft, setIsSavingGuestDraft] = useState(false);
+  const [guestDraftSaveError, setGuestDraftSaveError] = useState<string | null>(null);
+  const [savedProjectId, setSavedProjectId] = useState<string | null>(null);
+  const memoryCards = buildMemoryCards(t, guestDraft);
   const versions = buildVersions(t);
   const sourceNotes = buildSourceNotes(t);
   const portraitNotes = buildPortraitNotes(t);
+  const studioTitle = guestDraft?.result.sceneTitle || t("title");
+
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => {
+      const storedDraft = readGuestSceneDraft();
+      if (!storedDraft) return;
+
+      setGuestDraft(storedDraft);
+      setDraftText(storedDraft.result.sceneText);
+    }, 0);
+
+    return () => window.clearTimeout(timeoutId);
+  }, []);
+
+  const saveGuestDraftAsProject = async () => {
+    if (!guestDraft) return;
+
+    setIsSavingGuestDraft(true);
+    setGuestDraftSaveError(null);
+
+    try {
+      const response = await fetch("/api/projects/from-guest-draft", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(guestDraft),
+      });
+      const payload = (await response.json()) as
+        | ApiErrorResponse
+        | ProjectFromGuestDraftResponse;
+
+      if (!response.ok) {
+        setGuestDraftSaveError(
+          (payload as ApiErrorResponse).error || t("guestDraft.saveFailed")
+        );
+        return;
+      }
+
+      setSavedProjectId((payload as ProjectFromGuestDraftResponse).projectId);
+    } catch {
+      setGuestDraftSaveError(t("guestDraft.saveFailed"));
+      return;
+    } finally {
+      setIsSavingGuestDraft(false);
+    }
+
+    clearGuestSceneDraft();
+    setGuestDraft(null);
+    setSavedCount((count) => Math.max(count, 1));
+    setAction("save");
+  };
 
   return (
     <div className="min-h-screen bg-[#f3eadf] text-[#211713] dark:bg-[#120d0a] dark:text-[#fff4e8]">
@@ -107,8 +194,13 @@ export function DraftStudioPage() {
               {t("eyebrow")}
             </p>
             <h1 className="mt-2 font-serif text-3xl font-semibold md:text-5xl">
-              {t("title")}
+              {studioTitle}
             </h1>
+            {guestDraft && (
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-[#6b574d] dark:text-[#c7b09f]">
+                {t("guestDraft.loaded")}
+              </p>
+            )}
           </div>
           <div className="flex flex-wrap gap-2">
             <Button
@@ -142,7 +234,40 @@ export function DraftStudioPage() {
 
         <div className="mb-5 border border-[#d7c5b7] bg-[#f5ecdf] p-3 text-sm text-[#5f4c43] dark:border-[#4c382d] dark:bg-[#211713] dark:text-[#c7b09f]">
           {getStatusText(t, action)}
+          {savedProjectId && (
+            <p className="mt-1 text-[#3f7368] dark:text-[#91d5c3]">
+              {t("guestDraft.saveSuccess", { projectId: savedProjectId })}
+            </p>
+          )}
         </div>
+
+        {guestDraft && (
+          <div className="mb-5 flex flex-col gap-3 border border-[#241812] bg-[#241812] p-4 text-[#fff8ee] dark:border-[#6f4b37] dark:bg-[#0f0a08] md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="font-serif text-xl font-semibold">
+                {t("guestDraft.title")}
+              </p>
+              <p className="mt-1 text-sm leading-6 text-[#e8d5c4]">
+                {t("guestDraft.description")}
+              </p>
+            </div>
+            <Button
+              className="bg-[#e0b274] text-[#211713] hover:bg-[#f0c384]"
+              disabled={isSavingGuestDraft}
+              onClick={saveGuestDraftAsProject}
+            >
+              <Save className="mr-2 h-4 w-4" aria-hidden="true" />
+              {isSavingGuestDraft
+                ? t("guestDraft.saving")
+                : t("guestDraft.save")}
+            </Button>
+            {guestDraftSaveError && (
+              <p className="text-sm leading-6 text-red-200">
+                {guestDraftSaveError}
+              </p>
+            )}
+          </div>
+        )}
 
         <section className="grid gap-5 xl:grid-cols-[1fr_420px]">
           <div className="space-y-5">
@@ -176,7 +301,8 @@ export function DraftStudioPage() {
               <textarea
                 aria-label={t("editor.ariaLabel")}
                 className="min-h-[520px] w-full resize-y bg-transparent p-5 font-serif text-xl leading-9 text-[#2c1d17] outline-none dark:text-[#f2dfc9]"
-                defaultValue={t("editor.sampleText")}
+                onChange={(event) => setDraftText(event.target.value)}
+                value={draftText}
               />
             </div>
 
