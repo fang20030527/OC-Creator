@@ -11,7 +11,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Button } from "@/components/button";
 
@@ -197,9 +197,11 @@ function HeroPreview({
 function HeroSection({
   promptFields,
   t,
+  trySceneHref,
 }: {
   promptFields: PromptField[];
   t: ReturnType<typeof useTranslations<"landing">>;
+  trySceneHref: string;
 }) {
   return (
     <section className="relative overflow-hidden bg-[#f3eadf] px-5 pb-16 pt-32 dark:bg-[#120d0a] md:pb-20 md:pt-40">
@@ -226,7 +228,7 @@ function HeroSection({
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button
               as="a"
-              href="#try-first-scene"
+              href={trySceneHref}
               size="lg"
               className="bg-[#241812] text-[#fff8ee] hover:bg-[#3a291f] dark:bg-[#e0b274] dark:text-[#120d0a] dark:hover:bg-[#f0c384]"
             >
@@ -260,9 +262,11 @@ function HeroSection({
 function TryFirstSceneSection({
   promptFields,
   t,
+  trySceneHref,
 }: {
   promptFields: PromptField[];
   t: ReturnType<typeof useTranslations<"landing">>;
+  trySceneHref: string;
 }) {
   return (
     <section
@@ -328,7 +332,8 @@ function TryFirstSceneSection({
               </p>
             </div>
             <Button
-              as="button"
+              as="a"
+              href={trySceneHref}
               size="lg"
               className="mt-5 bg-[#e0b274] text-[#211713] hover:bg-[#f0c384] dark:bg-[#f0c384] dark:text-[#120d0a] dark:hover:bg-[#ffd59c] md:mt-0"
             >
@@ -472,8 +477,10 @@ function PrivacySection({
 
 function FinalCtaSection({
   t,
+  trySceneHref,
 }: {
   t: ReturnType<typeof useTranslations<"landing">>;
+  trySceneHref: string;
 }) {
   return (
     <section className="bg-[#f3eadf] px-5 py-20 dark:bg-[#120d0a] md:py-28">
@@ -490,7 +497,7 @@ function FinalCtaSection({
         <div className="mt-8 flex justify-center">
           <Button
             as="a"
-            href="#try-first-scene"
+            href={trySceneHref}
             size="lg"
             className="bg-[#241812] text-[#fff8ee] hover:bg-[#3a291f] dark:bg-[#e0b274] dark:text-[#120d0a] dark:hover:bg-[#f0c384]"
           >
@@ -505,19 +512,29 @@ function FinalCtaSection({
 
 export function LandingPage() {
   const t = useTranslations("landing");
+  const locale = useLocale();
   const promptFields = buildPromptFields(t);
   const steps = buildSteps(t);
   const memoryCards = buildMemoryCards(t);
   const trustItems = buildTrustItems(t);
+  const trySceneHref = `/${locale}/try`;
 
   return (
     <div className="min-h-screen bg-[#f3eadf] text-[#211713] dark:bg-[#120d0a] dark:text-[#fff4e8]">
-      <HeroSection promptFields={promptFields} t={t} />
-      <TryFirstSceneSection promptFields={promptFields} t={t} />
+      <HeroSection
+        promptFields={promptFields}
+        t={t}
+        trySceneHref={trySceneHref}
+      />
+      <TryFirstSceneSection
+        promptFields={promptFields}
+        t={t}
+        trySceneHref={trySceneHref}
+      />
       <HowItWorksSection steps={steps} t={t} />
       <MemorySection memoryCards={memoryCards} t={t} />
       <PrivacySection trustItems={trustItems} t={t} />
-      <FinalCtaSection t={t} />
+      <FinalCtaSection t={t} trySceneHref={trySceneHref} />
     </div>
   );
 }

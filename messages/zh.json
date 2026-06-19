@@ -1101,6 +1101,214 @@
       "description": "如果第一段片段理解了 OC 和关系动态，下一步就是保存项目，并在 Draft Studio 继续写下去。"
     }
   },
+  "tryScene": {
+    "meta": {
+      "title": "试写第一段 | AI Fandom OC Creator",
+      "description": "注册前先生成一段私密 OC 场景预览。"
+    },
+    "back": "返回落地页",
+    "eyebrow": "访客场景预览",
+    "title": "先试写一段，再决定要不要保存。",
+    "description": "从 PRD 规定的最小输入开始：你的 OC、关联对象，以及想要的关系动态。这个页面先做前端预览；真实生成和限流下一步接入。",
+    "trust": {
+      "items": {
+        "private": "不做公开发布，也不生成社区主页。",
+        "onePreview": "访客流程是注册前先看一次预览。",
+        "approval": "记忆只会在你确认后生效。",
+        "noExplicit": "可以有成熟张力，但不写露骨情色。"
+      }
+    },
+    "form": {
+      "eyebrow": "提示词",
+      "title": "场景种子",
+      "fields": {
+        "oc": {
+          "label": "你的 OC / 主角是谁？",
+          "ariaLabel": "你的 OC 或主角是谁？",
+          "value": "Mara，一个谨慎的档案跑腿人，总能比别人更早发现缺失记录。"
+        },
+        "connection": {
+          "label": "TA 和谁有关联？",
+          "ariaLabel": "TA 和谁有关联？",
+          "value": "Rowan，一个竞争关系的调查员，总能找到理由在雨里送她回家。"
+        },
+        "dynamic": {
+          "label": "你想要什么关系动态或 trope？",
+          "ariaLabel": "你想要什么关系动态或 trope？",
+          "value": "从怀疑变成精准照顾；慢热、情绪张力、互相保护。"
+        },
+        "context": {
+          "label": "可选 canon / AU 背景",
+          "ariaLabel": "可选 canon 或 AU 背景",
+          "value": "一座档案城市，文件会从记忆里消失，除非有人写下两遍。"
+        },
+        "boundaries": {
+          "label": "边界或绝对不要出现的内容",
+          "ariaLabel": "边界或绝对不要出现的内容",
+          "value": "保持成熟浪漫张力，但不要露骨。不做公开发布。"
+        }
+      },
+      "ageConfirmation": "我确认成熟浪漫提示只涉及成年角色，并且应保持非露骨。",
+      "generateTitle": "生成预览",
+      "generateDescription": "MVP 会在这里先生成一段 250-400 字片段，再邀请注册。",
+      "generateButton": "生成预览"
+    },
+    "placeholder": {
+      "eyebrow": "等待预览",
+      "title": "你的第一段场景会显示在这里。",
+      "body": "确认年龄和边界说明后，先生成前端预览。后续这里会调用 Evolink 文本接口，并在展示片段前进行安全检查。"
+    },
+    "result": {
+      "sceneEyebrow": "场景片段",
+      "sceneTitle": "账册室里的雨",
+      "sceneText": "Mara 在台灯下找到那张缺失的索引卡。纸角仍然潮湿，像是档案馆本身在她到来前试图把它淹掉。Rowan 停在门口时，她没有抬头。\n\n“你跟踪我。”她说。\n\n“你留下了墨迹。”他答得太轻。可当他的目光落到那张卡片上，玩笑从脸上退了下去。“这张昨天已经被抹掉了。我亲眼看见职员一边说架号，一边忘记它。”\n\nMara 用两根手指把卡片压平。房间里有雨水、旧胶水，以及秘密即将被分享时那种带电的沉默。她本该让 Rowan 离开。相反，她把第二支笔推过桌面。\n\n“写下你记得的内容。”她说，“如果我们都写，也许这座城市就必须保留它。”\n\n他接过笔，没有碰到她的手。那份小心不知为什么比触碰更亲密。",
+      "memoryEyebrow": "迷你记忆卡",
+      "memoryTitle": "建议记忆",
+      "memory": {
+        "oc": "OC 档案：谨慎、敏锐、不轻易接受帮助，但相信证据。",
+        "dynamic": "关系动态：竞争调查员从怀疑走向谨慎信任。",
+        "context": "故事背景：档案城市、消失记录、多雨氛围。",
+        "boundaries": "偏好与边界：第三人称、慢热张力、成熟但非露骨。"
+      }
+    },
+    "save": {
+      "title": "保存这个 OC 并继续",
+      "description": "注册应当出现在预览之后。保存后会创建第一个项目，并进入 Draft Studio。",
+      "cta": "注册并保存"
+    }
+  },
+  "projectLibrary": {
+    "fallbackUser": "writer",
+    "eyebrow": "项目库",
+    "title": "回到同一个 OC 项目。",
+    "welcome": "欢迎回来，{name}。项目库围绕 D1 same-project continuation：重新打开同一个项目，并完成一次有意义的创作动作。",
+    "primaryCta": "打开 Draft Studio",
+    "secondaryCta": "试写新的第一段",
+    "stats": {
+      "activeProject": {
+        "label": "免费活跃项目",
+        "value": "1"
+      },
+      "savedVersions": {
+        "label": "保存版本",
+        "value": "3"
+      },
+      "memoryActions": {
+        "label": "记忆动作",
+        "value": "2"
+      }
+    },
+    "projectsEyebrow": "已保存 OC 项目",
+    "projectsTitle": "你的私密草稿",
+    "freePlanNote": "MVP 免费版保留 1 个活跃项目。",
+    "projects": {
+      "archive": {
+        "title": "Mara 与雨中档案馆",
+        "status": "Studio 预览",
+        "description": "一个慢热档案谜题：信任通过共享证据、清晰边界和精准保护逐步建立。",
+        "updated": "当前草稿：今天自动保存",
+        "memory": "四块项目记忆待检查",
+        "action": "继续写"
+      }
+    },
+    "privateByDefault": "默认私密",
+    "checklist": {
+      "title": "下一步有意义动作",
+      "items": {
+        "firstScene": "继续或改写当前场景。",
+        "memoryReview": "接受或编辑一条记忆建议。",
+        "versionSave": "在试写前保存一个版本。",
+        "export": "当这一幕有效时复制或导出文本。"
+      }
+    },
+    "privacy": {
+      "title": "没有公开书架",
+      "description": "项目保持私密。MVP 的控制重点是删除项目、记忆、来源笔记和生成的 OC 图片。"
+    }
+  },
+  "draftStudio": {
+    "back": "返回项目库",
+    "eyebrow": "Draft Studio",
+    "title": "Mara 与雨中档案馆",
+    "status": {
+      "idle": "准备就绪。可以继续、改写、保存版本，或先检查项目记忆。",
+      "continue": "已排队继续：下一步接入后端时，会带着项目记忆生成 300-800 字新片段。",
+      "rewrite": "已排队改写：当前场景会在保留确认记忆和边界的前提下被重写。",
+      "save": "前端预览中已保存版本。",
+      "restore": "已选择恢复预览。真实版本恢复会在确认后替换当前草稿。"
+    },
+    "actions": {
+      "continue": "继续",
+      "rewrite": "改写",
+      "saveVersion": "保存版本",
+      "selectedRewrite": "改写选中段落",
+      "export": "导出"
+    },
+    "editor": {
+      "eyebrow": "当前草稿",
+      "title": "场景编辑器",
+      "ariaLabel": "当前草稿编辑器",
+      "sampleText": "Mara 在台灯下找到了第二份索引卡，纸角仍然潮湿。Rowan 站在门口，像是被雨本身邀请到那里。\n\n她本该让他离开。相反，她把一支笔推过桌面，看着他在她解释前就理解了危险。\n\n“写下你记得的内容。”她说，“如果我们都写，也许这座城市就必须保留它。”"
+    },
+    "suggestions": {
+      "eyebrow": "记忆建议",
+      "title": "确认后才会永久保存",
+      "body": "建议更新：Rowan 表达关心的方式不是直接要求信任，而是降低风险。",
+      "accepted": "此预览中已接受。真实 MVP 里，编辑后的建议会进入 Relationship Dynamic。",
+      "accept": "接受建议"
+    },
+    "versions": {
+      "eyebrow": "版本历史",
+      "title": "{count}/10 个保存版本",
+      "items": {
+        "opening": "雨中档案线索开场",
+        "rewrite": "更柔和张力改写",
+        "current": "当前草稿自动保存"
+      }
+    },
+    "memory": {
+      "eyebrow": "项目记忆",
+      "title": "四块可编辑区域",
+      "cards": {
+        "oc": {
+          "title": "OC 档案",
+          "body": "Mara 谨慎、精准，被不可能存在的记录吸引。"
+        },
+        "dynamic": {
+          "title": "关系动态",
+          "body": "从怀疑走向谨慎信任，信任来自共同危险。"
+        },
+        "context": {
+          "title": "故事背景",
+          "body": "档案城市、雨、消失记录，不承诺 canon-perfect。"
+        },
+        "boundaries": {
+          "title": "偏好与边界",
+          "body": "第三人称、成熟张力、淡出处理、不写露骨场景。"
+        }
+      }
+    },
+    "sources": {
+      "eyebrow": "URL 笔记",
+      "title": "只使用用户确认的背景",
+      "items": {
+        "archiveRules": "导入笔记是短摘要，不长期保存整页文本。",
+        "rainCity": "来源笔记保持可见，并可删除。",
+        "confirmedOnly": "笔记只有在用户确认后才会进入记忆。"
+      }
+    },
+    "portrait": {
+      "eyebrow": "OC 肖像",
+      "title": "生成前先确认视觉笔记",
+      "notes": {
+        "adult": "图片生成前确认成年外观。",
+        "hair": "发色、眼睛、服装、轮廓和气质由用户检查。",
+        "outfit": "只生成 OC 肖像；不生成 canon 角色或真人长相。",
+        "noCanon": "不接受露骨、性化、或精确模仿在世艺术家风格的请求。"
+      },
+      "cta": "检查视觉笔记"
+    }
+  },
   "landingFooter": {
     "description": "默认私密。用于成熟但非露骨的 OC 场景草稿，不是公开发布、角色聊天或 canon 资料库。",
     "productTitle": "产品",

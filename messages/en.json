@@ -1102,6 +1102,214 @@
       "description": "If the first snippet understands the OC and the dynamic, the next step is saving the project and continuing in Draft Studio."
     }
   },
+  "tryScene": {
+    "meta": {
+      "title": "Try your first scene | AI Fandom OC Creator",
+      "description": "Generate a private OC scene preview before signup."
+    },
+    "back": "Back to landing",
+    "eyebrow": "Guest scene preview",
+    "title": "Try one scene before you save anything.",
+    "description": "Start with the minimum the PRD allows: your OC, their connection, and the relationship dynamic you want. This page is a front-end preview; real generation and rate limits come next.",
+    "trust": {
+      "items": {
+        "private": "No public posting or community profile.",
+        "onePreview": "Visitor flow is one preview before signup.",
+        "approval": "Memory stays suggested until you approve it.",
+        "noExplicit": "Mature tension is fine; explicit erotica is not."
+      }
+    },
+    "form": {
+      "eyebrow": "Prompt",
+      "title": "Scene seed",
+      "fields": {
+        "oc": {
+          "label": "Who is your OC / protagonist?",
+          "ariaLabel": "Who is your OC or protagonist?",
+          "value": "Mara, a guarded archive courier who notices missing records before anyone else does."
+        },
+        "connection": {
+          "label": "Who are they connected to?",
+          "ariaLabel": "Who are they connected to?",
+          "value": "Rowan, a rival investigator who keeps finding excuses to walk her home in the rain."
+        },
+        "dynamic": {
+          "label": "What dynamic or trope do you want?",
+          "ariaLabel": "What dynamic or trope do you want?",
+          "value": "Suspicion turning into precise care; slow-burn, emotional tension, mutual protection."
+        },
+        "context": {
+          "label": "Optional canon / AU context",
+          "ariaLabel": "Optional canon or AU context",
+          "value": "An archive city where documents can vanish from memory unless written twice."
+        },
+        "boundaries": {
+          "label": "Boundaries or hard no's",
+          "ariaLabel": "Boundaries or hard no's",
+          "value": "Keep the romance mature but non-explicit. No public posting."
+        }
+      },
+      "ageConfirmation": "I confirm mature romance prompts involve adult characters and should remain non-explicit.",
+      "generateTitle": "Generate the preview",
+      "generateDescription": "The MVP will produce one 250-400 word snippet here before signup.",
+      "generateButton": "Generate preview"
+    },
+    "placeholder": {
+      "eyebrow": "Preview waiting",
+      "title": "Your first scene will appear here.",
+      "body": "Confirm the age and boundary note, then generate the front-end preview. Later this panel will call the Evolink text API and run safety checks before showing the snippet."
+    },
+    "result": {
+      "sceneEyebrow": "Scene snippet",
+      "sceneTitle": "Rain in the ledger room",
+      "sceneText": "Mara found the missing index card under the lamp, still damp at one corner, as if the archive itself had tried to drown it before she arrived. She did not look up when Rowan stopped in the doorway.\n\n\"You followed me,\" she said.\n\n\"You left a trail of ink,\" he answered, too lightly. Then his gaze dropped to the card, and the joke left his face. \"That one was erased yesterday. I watched the clerk forget its shelf number while he was saying it.\"\n\nMara pressed the card flat with two fingers. The room smelled like rainwater, old glue, and the charged silence of a secret becoming shared. She should have told Rowan to leave. Instead, she slid the second pen across the table.\n\n\"Write what you remember,\" she said. \"If we both write it, maybe the city has to keep it.\"\n\nHe took the pen without touching her hand. Somehow that carefulness felt more intimate than if he had.",
+      "memoryEyebrow": "Mini memory card",
+      "memoryTitle": "Suggested memory",
+      "memory": {
+        "oc": "OC Profile: guarded, observant, distrusts help but values proof.",
+        "dynamic": "Relationship Dynamic: rival investigators moving from suspicion to careful trust.",
+        "context": "Story Context: archive city, disappearing records, rain-heavy atmosphere.",
+        "boundaries": "Preferences & Boundaries: third-person, slow-burn tension, mature but non-explicit."
+      }
+    },
+    "save": {
+      "title": "Save this OC and continue",
+      "description": "Signup belongs after the preview. Saving will create the first project and open Draft Studio.",
+      "cta": "Sign up to save"
+    }
+  },
+  "projectLibrary": {
+    "fallbackUser": "writer",
+    "eyebrow": "Project Library",
+    "title": "Return to the same OC project.",
+    "welcome": "Welcome back, {name}. The library is focused on D1 same-project continuation: reopen one project and do a meaningful creation action.",
+    "primaryCta": "Open Draft Studio",
+    "secondaryCta": "Try a new first scene",
+    "stats": {
+      "activeProject": {
+        "label": "Free active project",
+        "value": "1"
+      },
+      "savedVersions": {
+        "label": "Saved versions",
+        "value": "3"
+      },
+      "memoryActions": {
+        "label": "Memory actions",
+        "value": "2"
+      }
+    },
+    "projectsEyebrow": "Saved OC projects",
+    "projectsTitle": "Your private drafts",
+    "freePlanNote": "Free plan keeps one active project in MVP.",
+    "projects": {
+      "archive": {
+        "title": "Mara and the rain archive",
+        "status": "Studio preview",
+        "description": "A slow-burn archive mystery where trust is built through shared evidence, careful boundaries, and precise acts of protection.",
+        "updated": "Autosaved draft: today",
+        "memory": "Four memory areas ready for review",
+        "action": "Continue"
+      }
+    },
+    "privateByDefault": "Private by default",
+    "checklist": {
+      "title": "Next meaningful actions",
+      "items": {
+        "firstScene": "Continue or rewrite the current scene.",
+        "memoryReview": "Accept or edit one memory suggestion.",
+        "versionSave": "Save a version before experimenting.",
+        "export": "Copy or export text when the beat works."
+      }
+    },
+    "privacy": {
+      "title": "No public shelf",
+      "description": "Projects stay private. MVP controls focus on deleting projects, memory, source notes, and generated OC images."
+    }
+  },
+  "draftStudio": {
+    "back": "Back to library",
+    "eyebrow": "Draft Studio",
+    "title": "Mara and the rain archive",
+    "status": {
+      "idle": "Ready. Choose continue, rewrite, save version, or review memory before the next generation.",
+      "continue": "Continue queued: the next backend step will generate the next 300-800 word snippet with project memory.",
+      "rewrite": "Rewrite queued: the current scene would be revised while preserving confirmed memory and boundaries.",
+      "save": "Version saved in the front-end preview.",
+      "restore": "Restore preview selected. Real version restore will replace the current draft after confirmation."
+    },
+    "actions": {
+      "continue": "Continue",
+      "rewrite": "Rewrite",
+      "saveVersion": "Save version",
+      "selectedRewrite": "Rewrite selection",
+      "export": "Export"
+    },
+    "editor": {
+      "eyebrow": "Current draft",
+      "title": "Scene editor",
+      "ariaLabel": "Current draft editor",
+      "sampleText": "Mara found the second copy of the index card under the lamp, still damp at one corner. Rowan stood in the doorway as if he had been invited there by the rain itself.\n\nShe should have told him to leave. Instead, she slid a pen across the table and watched him understand the danger before she explained it.\n\n\"Write what you remember,\" she said. \"If we both write it, maybe the city has to keep it.\""
+    },
+    "suggestions": {
+      "eyebrow": "Memory suggestion",
+      "title": "Approve before it becomes permanent",
+      "body": "Suggested update: Rowan shows care by reducing risk rather than asking for trust directly.",
+      "accepted": "Accepted for this preview. In the real MVP, the edited suggestion would move into Relationship Dynamic.",
+      "accept": "Accept suggestion"
+    },
+    "versions": {
+      "eyebrow": "Version history",
+      "title": "{count}/10 saved versions",
+      "items": {
+        "opening": "Opening scene with rain archive clue",
+        "rewrite": "Softer tension rewrite",
+        "current": "Current draft autosave"
+      }
+    },
+    "memory": {
+      "eyebrow": "Project memory",
+      "title": "Four editable areas",
+      "cards": {
+        "oc": {
+          "title": "OC Profile",
+          "body": "Mara is guarded, precise, and drawn to impossible records."
+        },
+        "dynamic": {
+          "title": "Relationship Dynamic",
+          "body": "Suspicion turning into careful trust through shared danger."
+        },
+        "context": {
+          "title": "Story Context",
+          "body": "Archive city, rain, vanishing records, no canon-perfect claims."
+        },
+        "boundaries": {
+          "title": "Preferences & Boundaries",
+          "body": "Third-person, mature tension, fade-to-black, no explicit scenes."
+        }
+      }
+    },
+    "sources": {
+      "eyebrow": "URL notes",
+      "title": "User-confirmed context only",
+      "items": {
+        "archiveRules": "Imported notes are short summaries, not stored full pages.",
+        "rainCity": "Source notes stay visible and deletable.",
+        "confirmedOnly": "Notes do not enter memory until the user confirms them."
+      }
+    },
+    "portrait": {
+      "eyebrow": "OC portrait",
+      "title": "Visual notes before generation",
+      "notes": {
+        "adult": "Confirm adult appearance before image generation.",
+        "hair": "Hair, eyes, outfit, silhouette, and vibe are user-reviewed.",
+        "outfit": "OC-only portrait; no canon characters or real person likeness.",
+        "noCanon": "No explicit, sexualized, or exact living artist style requests."
+      },
+      "cta": "Review visual notes"
+    }
+  },
   "landingFooter": {
     "description": "Private by default. Built for mature but non-explicit OC scene drafting, not public posting, character chat, or canon libraries.",
     "productTitle": "Product",

@@ -29,7 +29,7 @@ export const marketingNavigationKeys: NavigationKeyItem[] = [
   },
   {
     key: "tryFirstScene",
-    href: "/#try-first-scene",
+    href: "/try",
   },
 ];
 
@@ -64,7 +64,7 @@ export const marketingNavigation: NavigationItem[] = [
   },
   {
     title: "Try your first scene",
-    href: "/#try-first-scene",
+    href: "/try",
   },
 ];
 
